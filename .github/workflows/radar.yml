@@ -1,9 +1,11 @@
 name: AI Opportunity Radar
 
 on:
+  # Manual trigger from the Actions tab
   workflow_dispatch:
-  schedule:
-    - cron: "0 * * * *"
+  # Temporarily disable hourly schedule until Reddit API access is approved.
+  # schedule:
+  #   - cron: "0 * * * *"
 
 jobs:
   run-radar:
@@ -27,6 +29,8 @@ jobs:
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_SUBREDDIT: ${{ secrets.REDDIT_SUBREDDIT }}
           MIN_OPPORTUNITY_SCORE: ${{ secrets.MIN_OPPORTUNITY_SCORE }}
           OPPORTUNITY_PROMPT: ${{ secrets.OPPORTUNITY_PROMPT }}
